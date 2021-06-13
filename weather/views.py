@@ -15,7 +15,7 @@ def index(request):
         city_weather = requests.get(url.format(city.name)).json() #request the API data and convert the JSON to Python data types
         weather = {
             'city' : city.name,
-            'temperature' : city_weather['main']['temp'],
+            'temperature' : round((city_weather['main']['temp']-32)/1.8,2),
             'description' : city_weather['weather'][0]['description'],
             'icon' : city_weather['weather'][0]['icon']
         }
